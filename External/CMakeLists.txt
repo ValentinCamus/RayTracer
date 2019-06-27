@@ -15,7 +15,17 @@ add_custom_target(update COMMENT "Updated all external projects")
 # target_link_libraries (exampleApp PRIVATE catch)
 # #include <catch.hpp>
 ExternalHeaderOnly_Add(Catch
-    "https://github.com/catchorg/Catch2.git" "origin/master" "single_include/catch2")
+    "https://github.com/catchorg/Catch2.git"
+    "origin/master"
+    "single_include/catch2")
+
+#------------------------------------------------------------------------------
+# target_link_libraries (AlphaEngine PRIVATE glm)
+# #include <glm/glm.hpp>
+ExternalHeaderOnly_Add(glm
+        "https://github.com/g-truc/glm.git"
+        "origin/master"
+        "include")
 
 #------------------------------------------------------------------------------
 # Examples of other External projects

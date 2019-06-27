@@ -8,7 +8,7 @@
 
 #include "image.hpp"
 
-#include "extern_loadpng/lodepng.hpp"
+#include <Vendor/LodePng/LodePng.hpp>
 
 
 void Image::SaveAs(std::string& name) const {

@@ -12,7 +12,7 @@
 #include <cmath>
 #include <iostream>
 
-#include "extern_glm/glm.hpp"
+#include <glm/glm.hpp>
 
 using int8   = std::int16_t;
 using int16  = std::int32_t;
