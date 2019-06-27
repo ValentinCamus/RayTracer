@@ -30,13 +30,13 @@ add_custom_target(checkVerbose
 
 # Basic runable tests (will not crash)
 add_test(NAME "Is_Runable "
-    COMMAND $<TARGET_FILE:exampleApp>)
+    COMMAND $<TARGET_FILE:RayTracer>)
 
 add_test(NAME "Is_Runable-v"
-    COMMAND $<TARGET_FILE:exampleApp> -v)
+    COMMAND $<TARGET_FILE:RayTracer> -v)
 
 add_test(NAME "Is_Runable-h"
-    COMMAND $<TARGET_FILE:exampleApp> -h)
+    COMMAND $<TARGET_FILE:RayTracer> -h)
 
 
 

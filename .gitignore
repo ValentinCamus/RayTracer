@@ -1,9 +1,11 @@
-build*/
-external/*
-!external/CMakeLists.txt
-*.sublime-workspace
+Build*/
+External/*
+!External/CMakeLists.txt
+
 .tags
 tags
 *.pyc
 *.swp
 *.swo
+
+.idea/*
