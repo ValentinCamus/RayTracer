@@ -9,3 +9,5 @@ tags
 *.swo
 
 .idea/*
+
+.DS_Store
