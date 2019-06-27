@@ -6,7 +6,7 @@
 //  Copyright © 2018 Valentin. All rights reserved.
 //
 
-#include "../ray.hpp"
+#include "ray.hpp"
 
 void Ray::Redirect(vec3 o, vec3 d, float tmin, float tmax, uint32 depth){
     m_origin = o;

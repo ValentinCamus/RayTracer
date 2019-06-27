@@ -6,7 +6,7 @@
 //  Copyright © 2018 Valentin. All rights reserved.
 //
 
-#include "../image.hpp"
+#include "image.hpp"
 
 #include "extern_loadpng/lodepng.hpp"
 
