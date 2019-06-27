@@ -132,17 +132,6 @@
               <item name="RayTracer" type="b2602c69:ProjectViewProjectNode" />
               <item name="RayTracer" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="RayTracer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RayTracer" type="462c0819:PsiDirectoryNode" />
-              <item name="Source" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RayTracer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RayTracer" type="462c0819:PsiDirectoryNode" />
-              <item name="Source" type="462c0819:PsiDirectoryNode" />
-              <item name="UnitTest" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -446,19 +435,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561622859071</updated>
-      <workItem from="1561622862572" duration="2304000" />
+      <workItem from="1561622862572" duration="2741000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2304000" />
+    <option name="totallyTimeSpent" value="2741000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24959612" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24959612" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
@@ -468,7 +456,7 @@
       <window_info anchor="bottom" id="CMake" weight="0.32876712" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32876712" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32876712" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32876712" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
