@@ -15,7 +15,6 @@
 
 #include "math/math.hpp"
 #include "common/types.hpp"
-#include "misc/progress_bar.hpp"
 
 class Image {
 public:

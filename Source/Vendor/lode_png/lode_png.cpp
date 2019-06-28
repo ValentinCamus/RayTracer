@@ -28,7 +28,7 @@
  Rename this file to lodepng.cpp to use it for C++, or to lodepng.c to use it for C.
  */
 
-#include "LodePng.hpp"
+#include "lode_png.hpp"
 
 #include <limits.h>
 #include <stdio.h>

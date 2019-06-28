@@ -20,7 +20,8 @@
 #include "kdtree.hpp"
 #include "math/rdm.hpp"
 #include "common/types.hpp"
-#include "misc/progress_bar.hpp"
+
+#include <Vendor/cpptqdm/tqdm.hpp>
 
 #define MAX_DEPTH 10      // Max number of reflection
 #define MAX_RADIANCE 0.01 // Minimal intensity
@@ -143,7 +144,7 @@ Image * RayTracer::Render() {
     const vec3 rconst = m_cam->Center() + rdx + rdy;
 
     std::cout << std::endl << "Rendering : " << std::endl;
-    ProgressBar progress(m_img->Height());
+    tqdm bar;
 
 #pragma omp parallel for schedule(dynamic)
     for(uint32 j = 0; j < m_img->Height(); ++j) {
@@ -152,8 +153,10 @@ Image * RayTracer::Render() {
             rdir = glm::normalize(rdir);
             m_img->Pixel(i, j) = Trace(rdir);
         }
-        ++progress; // update the progress bar
+        bar.progress(j, m_img->Height()); // Update the progress bar
     }
+    std::cout << std::endl << std::endl;
+
     return m_img;
 }
 
