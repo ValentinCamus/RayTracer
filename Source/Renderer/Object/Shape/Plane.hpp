@@ -1,6 +1,6 @@
 //
 //  plane.hpp
-//  RayTracer
+//  Ray
 //
 //  Created by Valentin on 14/11/2018.
 //  Copyright © 2018 Valentin. All rights reserved.
@@ -9,10 +9,10 @@
 #ifndef plane_hpp
 #define plane_hpp
 
-#include "../ray.hpp"
-#include "../object.hpp"
+#include <Core/Core.hpp>
 
-#include "../common/types.hpp"
+#include "Renderer/Ray/Ray.hpp"
+#include "Renderer/Object/Object.hpp"
 
 #define PLANE_WORLD_POSITION vec3(0.f)  /* A plane doesn't have a world position,      */
                                         /* so by default it's the center of the world  */

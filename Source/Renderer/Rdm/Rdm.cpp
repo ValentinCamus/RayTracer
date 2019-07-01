@@ -1,14 +1,14 @@
 //
 //  rdm.cpp
-//  RayTracer
+//  Ray
 //
 //  Created by Valentin on 15/11/2018.
 //  Copyright © 2018 Valentin. All rights reserved.
 //
 
-#include "rdm.hpp"
+#include "Rdm.hpp"
 
-#include "math.hpp"
+#include "Core/Math/Math.hpp"
 
 float rdm::Chiplus(float c) { return (c > 0.f) ? 1.f : 0.f; }
 

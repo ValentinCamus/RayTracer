@@ -1,6 +1,6 @@
 //
-//  math.hpp
-//  RayTracer
+//  Math.hpp
+//  Ray
 //
 //  Created by Valentin on 11/11/2018.
 //  Copyright © 2018 Valentin. All rights reserved.
@@ -11,7 +11,7 @@
 
 #include <cmath>
 
-#include "../common/types.hpp"
+#include <Core/Type/Type.hpp>
 
 
 template<class T> T inline Pow2(T value) { return value * value; }

@@ -1,6 +1,6 @@
 //
 //  ray_tracer.hpp
-//  RayTracer
+//  Ray
 //
 //  Created by Valentin on 11/11/2018.
 //  Copyright © 2018 Valentin. All rights reserved.
@@ -13,13 +13,15 @@
 #include <memory>
 #include <iostream>
 
-#include "scene.hpp"
-#include "image.hpp"
-#include "object.hpp"
-#include "camera.hpp"
-#include "kdtree.hpp"
-#include "math/rdm.hpp"
-#include "common/types.hpp"
+#include <Core/Core.hpp>
+
+#include <Renderer/Rdm/Rdm.hpp>
+
+#include <Renderer/Scene/Scene.hpp>
+#include <Renderer/Image/Image.hpp>
+#include <Renderer/Object/Object.hpp>
+#include <Renderer/Camera/Camera.hpp>
+#include <Renderer/KdTree/KdTree.hpp>
 
 #include <Vendor/cpptqdm/tqdm.hpp>
 
@@ -143,7 +145,7 @@ Image * RayTracer::Render() {
     const vec3 rdx = (0.5f - w * 0.5f) / (w * 0.5f) * m_cam->Xdir();
     const vec3 rconst = m_cam->Center() + rdx + rdy;
 
-    std::cout << std::endl << "Rendering : " << std::endl;
+    std::cout << "Rendering : " << std::endl;
     tqdm bar;
 
 #pragma omp parallel for schedule(dynamic)

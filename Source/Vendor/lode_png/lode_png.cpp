@@ -44,7 +44,7 @@ const char* LODEPNG_VERSION_STRING = "20161127";
 /*
  This source file is built up in the following large parts. The code sections
  with the "LODEPNG_COMPILE_" #defines divide this up further in an intermixed way.
- -Tools for C and common code for PNG and Zlib
+ -Tools for C and Core code for PNG and Zlib
  -C Code for Zlib (huffman, deflate, ...)
  -C Code for PNG (file format chunks, adam7, PNG filters, color conversions, ...)
  -The C++ wrapper around all of the above
@@ -82,7 +82,7 @@ void lodepng_free(void* ptr);
 
 /* ////////////////////////////////////////////////////////////////////////// */
 /* ////////////////////////////////////////////////////////////////////////// */
-/* // Tools for C, and common code for PNG and Zlib.                       // */
+/* // Tools for C, and Core code for PNG and Zlib.                       // */
 /* ////////////////////////////////////////////////////////////////////////// */
 /* ////////////////////////////////////////////////////////////////////////// */
 
@@ -99,7 +99,7 @@ errorvar = code;\
 break;\
 }
 
-/*version of CERROR_BREAK that assumes the common case where the error variable is named "error"*/
+/*version of CERROR_BREAK that assumes the Core case where the error variable is named "error"*/
 #define ERROR_BREAK(code) CERROR_BREAK(error, code)
 
 /*Set error var to the error code, and return it.*/
@@ -411,7 +411,7 @@ unsigned lodepng_save_file(const unsigned char* buffer, size_t buffersize, const
 
 /* ////////////////////////////////////////////////////////////////////////// */
 /* ////////////////////////////////////////////////////////////////////////// */
-/* // End of common code and tools. Begin of Zlib related code.            // */
+/* // End of Core code and tools. Begin of Zlib related code.            // */
 /* ////////////////////////////////////////////////////////////////////////// */
 /* ////////////////////////////////////////////////////////////////////////// */
 
@@ -1541,7 +1541,7 @@ static unsigned encodeLZ77(uivector* out, Hash* hash,
                 foreptr = &in[pos];
                 backptr = &in[pos - current_offset];
                 
-                /*common case in PNGs is lots of zeros. Quickly skip over them as a speedup*/
+                /*Core case in PNGs is lots of zeros. Quickly skip over them as a speedup*/
                 if(numzeros >= 3)
                 {
                     unsigned skip = hash->zeros[hashpos];
@@ -3238,7 +3238,7 @@ static void getPixelColorRGBA8(unsigned char* r, unsigned char* g,
         
         if(index >= mode->palettesize)
         {
-            /*This is an error according to the PNG spec, but common PNG decoders make it black instead.
+            /*This is an error according to the PNG spec, but Core PNG decoders make it black instead.
              Done here too, slightly faster due to no error handling needed.*/
             *r = *g = *b = 0;
             *a = 255;

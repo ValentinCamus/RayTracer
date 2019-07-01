@@ -1,6 +1,6 @@
 //
 //  scene.hpp
-//  RayTracer
+//  Ray
 //
 //  Created by Valentin on 11/11/2018.
 //  Copyright © 2018 Valentin. All rights reserved.
@@ -12,10 +12,10 @@
 #include <vector>
 #include <memory>
 
-#include "object.hpp"
-#include "light.hpp"
+#include <Core/Core.hpp>
 
-#include "common/types.hpp"
+#include "Renderer/Object/Object.hpp"
+#include "Renderer/Light/Light.hpp"
 
 class Scene {
 public:

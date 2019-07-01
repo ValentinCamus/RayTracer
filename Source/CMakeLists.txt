@@ -27,9 +27,9 @@ add_custom_target(versionFileTouchForRebuild
 find_package (Threads REQUIRED) #threading
 
 #------------------------------------------------------------------------------
-# By using macro to add common dependencies you can avoid repetition when you have
+# By using macro to add Core dependencies you can avoid repetition when you have
 # multiple binaries.
-# Use with `addCommonDependencies(RayTracer)`
+# Use with `addCommonDependencies(Ray)`
 # macro(addCommonDependencies TARGET)
 #     add_dependencies(${TARGET} versionFileTouchForRebuild) # We want precise time of build in version
 #     target_include_directories(${TARGET} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
@@ -38,7 +38,7 @@ find_package (Threads REQUIRED) #threading
 # endmacro()
 
 #-------------------------------------------------------------------------------
-# RayTracer executable setup
+# Ray executable setup
 
 set(ICON_RESOURCE "")
 if(WIN32) #windows icon resource file, provided from /Packaging directory
@@ -71,27 +71,27 @@ install(TARGETS RayTracer
     RUNTIME DESTINATION bin)
 
 # Using macro from CMake/cleanCpppExtensions.cpp included on the top
-# Provides RayTracer-run and RayTracer-dbg
+# Provides Ray-run and Ray-dbg
 addRunAndDebugTargets(RayTracer)
 
 # short convenience target from CMake/cleanCpppExtensions.cpp
 add_custom_target(run DEPENDS RayTracer-run)
 
 # Manually specified convenience target for running the binary, we use macro
-# add_custom_target(RayTracer-run
+# add_custom_target(Ray-run
 #     WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin
 #     USES_TERMINAL
-#     COMMAND ./RayTracer
+#     COMMAND ./Ray
 #     DEPENDS Install_)
 
 # And this would add -DBAR_ENABLE_FEATURE or equivalent to build command
-# target_compile_definitions(RayTracer PRIVATE BAR_ENABLE_FEATURE)
+# target_compile_definitions(Ray PRIVATE BAR_ENABLE_FEATURE)
 
 # Add compile time definition based on option
 # option(OPTION_NAME "description for end user" OFF)
 # if(OPTION_NAME)
 #     # you can do anything here, eg. setup new optional executable
-#     target_compile_definitions(RayTracer PRIVATE DEFINE_NAME)
+#     target_compile_definitions(Ray PRIVATE DEFINE_NAME)
 # endif()
 
 # Add building new shared library
@@ -102,18 +102,18 @@ add_custom_target(run DEPENDS RayTracer-run)
 # How to include and link OpenGL and GLUT libraries
 # find_package(OpenGL REQUIRED)
 # find_package(GLUT REQUIRED)
-# target_include_directories(RayTracer SYSTEM ${OPENGL_INCLUDE_DIRS} ${GLUT_INCLUDE_DIRS} )
-# target_link_libraries(RayTracer ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} )
+# target_include_directories(Ray SYSTEM ${OPENGL_INCLUDE_DIRS} ${GLUT_INCLUDE_DIRS} )
+# target_link_libraries(Ray ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} )
 
 # How to use some other standard packages
 # find_package(ZLIB REQUIRED) 
-# target_link_libraries (RayTracer PRIVATE ZLIB::ZLIB)
+# target_link_libraries (Ray PRIVATE ZLIB::ZLIB)
 # 
 # find_package(OpenSSL REQUIRED)
-# target_link_libraries (RayTracer PRIVATE OpenSSL::SSL OpenSSL::Crypto)
+# target_link_libraries (Ray PRIVATE OpenSSL::SSL OpenSSL::Crypto)
 #
 # find_package(CURL REQUIRED)
-# target_link_libraries (RayTracer PRIVATE CURL::libcurl)
+# target_link_libraries (Ray PRIVATE CURL::libcurl)
 
 #------------------------------------------------------------------------------
 # Unit tests

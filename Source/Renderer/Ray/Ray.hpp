@@ -1,6 +1,6 @@
 //
 //  ray.hpp
-//  RayTracer
+//  Ray
 //
 //  Created by Valentin on 11/11/2018.
 //  Copyright © 2018 Valentin. All rights reserved.
@@ -9,10 +9,10 @@
 #ifndef ray_hpp
 #define ray_hpp
 
-#include "common/types.hpp"
+#include <Core/Core.hpp>
 
-#include "component.hpp"
-#include "material.hpp"
+#include "Renderer/Component/SceneComponent.hpp"
+#include "Renderer/Material/Material.hpp"
 
 #define MAX_RANGE 10000
 #define BIAS 2e-4
@@ -34,10 +34,10 @@ struct HitResult {
     
 };
 
-class Ray : public Component {
+class Ray : public SceneComponent {
 public:
-    Ray() : Component() {}
-    inline Ray(vec3 o, vec3 d, float tmin = 0, float tmax = MAX_RANGE, uint32 depth = 0) : Component(o) {
+    Ray() : SceneComponent() {}
+    inline Ray(vec3 o, vec3 d, float tmin = 0, float tmax = MAX_RANGE, uint32 depth = 0) : SceneComponent(o) {
         Redirect(o, d, tmin, tmax, depth);
     }
     

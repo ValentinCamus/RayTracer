@@ -1,6 +1,6 @@
 //
 //  rdm.hpp
-//  RayTracer
+//  Ray
 //
 //  Created by Valentin on 15/11/2018.
 //  Copyright © 2018 Valentin. All rights reserved.
@@ -9,8 +9,9 @@
 #ifndef rdm_hpp
 #define rdm_hpp
 
-#include "../material.hpp"
-#include "../common/types.hpp"
+#include <Core/Type/Type.hpp>
+
+#include "Renderer/Material/Material.hpp"
 
 namespace rdm {
     float Chiplus(float c);

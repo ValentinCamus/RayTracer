@@ -1,6 +1,6 @@
 //
 //  main.cpp
-//  RayTracer
+//  Ray
 //
 //  Created by Valentin on 11/11/2018.
 //  Copyright © 2018 Valentin. All rights reserved.
@@ -13,13 +13,14 @@
 #include <chrono>
 #include <iostream>
 
-#include "image.hpp"
-#include "object.hpp"
-#include "ray_tracer.hpp"
-#include "common/types.hpp"
+#include <Core/Core.hpp>
 
-#include "shape/sphere.hpp"
-#include "shape/plane.hpp"
+#include <Renderer/Image/Image.hpp>
+#include <Renderer/RayTracer.hpp>
+
+#include <Renderer/Object/Object.hpp>
+#include <Renderer/Object/Shape/Sphere.hpp>
+#include <Renderer/Object/Shape/Plane.hpp>
 
 using Clock = std::chrono::high_resolution_clock;
 using Duration = std::chrono::duration<double>;

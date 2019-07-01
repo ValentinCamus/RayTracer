@@ -1,6 +1,6 @@
 //
 //  kdtree.hpp
-//  RayTracer
+//  Ray
 //
 //  Created by Valentin on 21/11/2018.
 //  Copyright © 2018 Valentin. All rights reserved.
@@ -12,10 +12,11 @@
 #include <vector>
 #include <stack>
 
-#include "aabb.hpp"
-#include "object.hpp"
-#include "math/math.hpp"
-#include "interface/intersectable.hpp"
+#include <Core/Core.hpp>
+
+#include "Renderer/Object/AxisAlignedBoundingBox.hpp"
+#include "Renderer/Object/Object.hpp"
+#include "Renderer/Interface/Intersectable.hpp"
 
 struct KDNode {
     bool  bIsLeaf;              // is this node a leaf ?
@@ -48,7 +49,7 @@ public:
     KdTree() {};
     KdTree(std::vector<Object*>& objects);
 
-    ~KdTree() { /* TODO */ };
+    ~KdTree() override { /* TODO */ };
 
     bool Intersect(Ray & ray, HitResult & hit) override;
 
@@ -182,8 +183,8 @@ bool KdTree::Intersect(Ray & ray, HitResult & hit) {
         if (node->bIsLeaf) IntersectLeaf(node, ray, hit);
         else {
 
-            AABB leftAABB  = AABB(node->left->min, node->left->max);
-            AABB rightAABB = AABB(node->right->min, node->right->max);
+            AxisAlignedBoundingBox leftAABB  = AxisAlignedBoundingBox(node->left->min, node->left->max);
+            AxisAlignedBoundingBox rightAABB = AxisAlignedBoundingBox(node->right->min, node->right->max);
             HitResult nodeHitResult;
 
             const bool bRightFirst = ray.Direction()[node->axis] > 0;

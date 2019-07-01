@@ -1,6 +1,6 @@
 //
 //  camera.hpp
-//  RayTracer
+//  Ray
 //
 //  Created by Valentin on 11/11/2018.
 //  Copyright © 2018 Valentin. All rights reserved.
@@ -9,12 +9,13 @@
 #ifndef camera_hpp
 #define camera_hpp
 
-#include "component.hpp"
-#include "common/types.hpp"
+#include <Core/Core.hpp>
 
-class Camera : public Component {
+#include "Renderer/Component/SceneComponent.hpp"
+
+class Camera : public SceneComponent {
 public:
-    Camera(vec3 pos, vec3 at, vec3 up, float fov, float aspect) : Component(pos) {
+    Camera(vec3 pos, vec3 at, vec3 up, float fov, float aspect) : SceneComponent(pos) {
         m_fov       = fov;
         m_aspect    = aspect;
         m_zdir      = glm::normalize(at - pos);

@@ -1,6 +1,6 @@
 //
 //  sphere.hpp
-//  RayTracer
+//  Ray
 //
 //  Created by Valentin on 12/11/2018.
 //  Copyright © 2018 Valentin. All rights reserved.
@@ -11,18 +11,18 @@
 
 #include <iostream>
 
-#include "../math/math.hpp"
-#include "../object.hpp"
+#include <Core/Core.hpp>
 
-#include "../common/types.hpp"
+#include "Renderer/Object/Object.hpp"
+
 
 class Sphere : public Object {
 public:
     Sphere(vec3 origin, float radius, Material * mat) : Object(origin, true), m_radius(radius), m_mat(mat) {};
     ~Sphere() override {};
     
-    inline AABB GetAABB() override {
-        return AABB(Position() - m_radius, Position() + m_radius);
+    inline AxisAlignedBoundingBox GetAABB() override {
+        return AxisAlignedBoundingBox(Position() - m_radius, Position() + m_radius);
     }
     
     bool Intersect(Ray& ray, HitResult& hit) override;

@@ -1,6 +1,6 @@
 //
 //  aabb.hpp
-//  RayTracer
+//  Ray
 //
 //  Created by Valentin on 21/11/2018.
 //  Copyright © 2018 Valentin. All rights reserved.
@@ -9,19 +9,19 @@
 #ifndef aabb_hpp
 #define aabb_hpp
 
-#include "ray.hpp"
-#include "component.hpp"
-#include "common/types.hpp"
-#include "interface/intersectable.hpp"
+#include <Core/Core.hpp>
 
-class AABB : public Intersectable {
+#include <Renderer/Ray/Ray.hpp>
+#include <Renderer/Component/SceneComponent.hpp>
+#include <Renderer/Interface/Intersectable.hpp>
+
+class AxisAlignedBoundingBox : public Intersectable {
 public:
-    inline AABB(vec3 min, vec3 max) : m_bounds {min, max} { }
-    inline AABB(vec3 bounds[2]) : m_bounds {bounds[0], bounds[1]} { }
+    explicit inline AxisAlignedBoundingBox(vec3 min, vec3 max) : m_bounds {min, max} { }
+    explicit inline AxisAlignedBoundingBox(vec3 bounds[2]) : m_bounds {bounds[0], bounds[1]} { }
     
     bool Intersect(Ray & ray, HitResult & hit) override;
 
-    
     inline vec3  Center() const { return (m_bounds[0] + m_bounds[1]) / 2.0f; }
     inline vec3& Min() { return m_bounds[0]; }
     inline vec3& Max() { return m_bounds[1]; }
@@ -29,15 +29,12 @@ private:
     vec3 m_bounds[2];
 };
 
-bool AABB::Intersect(Ray & ray, HitResult & hit) {
+bool AxisAlignedBoundingBox::Intersect(Ray & ray, HitResult & hit) {
     
     // TODO : optimize me !!
-    
-    const uint32 *  rsign   = ray.Sign();
-    const vec3 &    rpos    = ray.Position();
-    const vec3 &    rinvdir = ray.Invdir();
-    
-    const vec3 &    rdir    = ray.Direction();
+
+    const vec3 & rpos = ray.Position();
+    const vec3 & rdir = ray.Direction();
     
     float tmin = (Min().x - rpos.x) / rdir.x;
     float tmax = (Max().x - rpos.x) / rdir.x;

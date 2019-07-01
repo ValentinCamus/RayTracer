@@ -1,16 +1,9 @@
 //
-//  types.hpp
-//  RayTracer
-//
-//  Created by Valentin on 11/11/2018.
-//  Copyright © 2018 Valentin. All rights reserved.
+// Created by Valentin on 2019-07-01.
 //
 
-#ifndef types_hpp
-#define types_hpp
-
-#include <cmath>
-#include <iostream>
+#ifndef RAYTRACER_TYPE_HPP
+#define RAYTRACER_TYPE_HPP
 
 #include <glm/glm.hpp>
 
@@ -29,4 +22,4 @@ using byte   = unsigned char;
 using vec3   = glm::vec3;
 using color3 = glm::vec3;
 
-#endif /* types_hpp */
+#endif //RAYTRACER_TYPE_HPP
