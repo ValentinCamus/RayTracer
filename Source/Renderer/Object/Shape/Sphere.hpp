@@ -26,11 +26,11 @@ namespace rt
         ~Sphere() override = default;
 
         /// @return: The object AABB.
-        inline AxisAlignedBoundingBox AABB() override
+        inline BoundingBox BBox() override
         {
             vec3 min = Position() - m_radius;
             vec3 max = Position() + m_radius;
-            return AxisAlignedBoundingBox(min, max);
+            return BoundingBox(min, max);
         }
 
         /// Intersect this object with a ray.

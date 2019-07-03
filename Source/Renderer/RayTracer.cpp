@@ -6,6 +6,8 @@
 
 #include <omp.h>
 
+#include <Renderer/Object/Shape/Sphere.hpp>
+
 namespace rt
 {
     color3 RayTracer::Shade(vec3 n, vec3 v, vec3 l, color3 lc, Material * mat) const
@@ -25,14 +27,15 @@ namespace rt
         return bsdf * ldotn * lc;
     }
 
+    static Material g_m = Material(1.3, 0.1, color3(.5f, .5f, .5f), color3(0.6f));
+
     bool RayTracer::CastRay(Ray & ray, HitResult & hit) const
     {
         hit = HitResult(false);
 
-        // m_kdtree->Intersect(ray, hit);
+        m_kdTree->Intersect(ray, hit);
 
-        for (Object * obj : m_scene->Objects())
-            obj->Intersect(ray, hit);
+        // for (Object * obj : m_scene->Objects()) obj->Intersect(ray, hit);
 
         return hit.bSuccess;
     }
@@ -40,22 +43,26 @@ namespace rt
     bool RayTracer::IsLighted(vec3 ldir, vec3 lpos, vec3 hitpos) const
     {
         float tmax = glm::length(lpos - hitpos);
+
         Ray ray = Ray(hitpos + ldir * float(BIAS), ldir, 0, tmax);
         HitResult hit = HitResult(false);
+
         return !CastRay(ray, hit);
     }
 
     color3 RayTracer::Reflect(Ray & ray, HitResult & hit) const
     {
         vec3 refldir = glm::reflect(ray.Direction(), hit.normal);
+
         ray = Ray(hit.location + refldir * float(BIAS), refldir, 0, MAX_RANGE, ray.Depth() + 1);
+
         float ldotn = glm::dot(ray.Direction(), hit.normal);
         float fresnel = rdm::Fresnel(ldotn, 1.f, hit.material->IndexOfRefraction());
 
         return fresnel * Trace(ray) * hit.material->Specular();
     }
 
-    color3 RayTracer::Trace(Ray & ray) const
+    color3 RayTracer::Trace(Ray& ray) const
     {
         color3 out = color3(0.0f);
         if (ray.Depth() >  MAX_DEPTH) return out;

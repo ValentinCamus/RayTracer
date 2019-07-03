@@ -20,7 +20,7 @@ namespace rt
         else return false; // this sphere is out of range
 
         ray.Tmax() = t;
-        vec3 hitp   = ray.At(t);
+        vec3 hitp = ray.At(t);
         vec3 normal = hitp - Position();
         hit = HitResult(hitp, glm::normalize(normal), m_mat);
 

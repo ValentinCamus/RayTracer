@@ -12,10 +12,10 @@
 
 #include <Renderer/Interface/Intersectable.hpp>
 #include <Renderer/Component/SceneComponent.hpp>
-#include <Renderer/Bound/AxisAlignedBoundingBox.hpp>
+#include <Renderer/Bound/BoundingBox.hpp>
 #include <Renderer/Ray/Ray.hpp>
 
-#define NULL_AABB AxisAlignedBoundingBox(vec3(0.f), vec3(0.f))
+#define NULL_AABB BoundingBox(vec3(0.f), vec3(0.f))
 
 namespace rt
 {
@@ -27,20 +27,20 @@ namespace rt
         /// Constructor.
         explicit inline Object(vec3 pos, bool bUseAABB = true) :
             SceneComponent(pos),
-            m_bIsBoundByAABB(bUseAABB) {}
+            m_bIsBoundByBoundingBox(bUseAABB) {}
 
         /// Destructor.
         ~Object() override = default;
 
         /// @return: true if this object is bound by an AABB.
-        inline bool IsBoundByAABB() const { return m_bIsBoundByAABB; }
+        inline bool IsBoundByBoundingBox() const { return m_bIsBoundByBoundingBox; }
 
         /// @return: The object AABB (NULL_AABB by default).
-        virtual inline AxisAlignedBoundingBox AABB() { return NULL_AABB; }
+        virtual inline BoundingBox BBox() { return BoundingBox(); }
 
     private:
         /// If this object is bound by an AABB.
-        bool m_bIsBoundByAABB;
+        bool m_bIsBoundByBoundingBox;
     };
 }
 

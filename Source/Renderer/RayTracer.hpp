@@ -17,6 +17,8 @@
 #include <Renderer/Object/Object.hpp>
 #include <Renderer/Camera/Camera.hpp>
 
+#include <Renderer/KdTree/KdTree.hpp>
+
 #include <Vendor/cpptqdm/tqdm.hpp>
 
 #define MAX_DEPTH 10      // Max number of reflection
@@ -33,7 +35,10 @@ namespace rt
                                   Camera * camera) :
             m_image(image),
             m_scene(scene),
-            m_camera(camera) {};
+            m_camera(camera)
+        {
+            m_kdTree = new KdTree(scene->Objects());
+        };
 
         /// Detect the hit information between a ray and the scene.
         /// @hit: The hit result.
@@ -66,6 +71,8 @@ namespace rt
 
         /// The camera.
         Camera * m_camera;
+
+        KdTree * m_kdTree;
     };
 }
 
