@@ -6,19 +6,30 @@
 //  Copyright © 2018 Valentin. All rights reserved.
 //
 
-#ifndef light_hpp
-#define light_hpp
-
-#include "Renderer/Component/SceneComponent.hpp"
+#pragma once
 
 #include <Core/Core.hpp>
 
-class Light : public SceneComponent {
-public:
-    Light(vec3 pos, color3 color) : SceneComponent(pos), m_color(color) {}
-    inline color3& Color() { return m_color; }
-private:
-    color3 m_color;
-};
+#include <Renderer/Component/SceneComponent.hpp>
 
-#endif /* light_hpp */
+namespace rt
+{
+    class Light : public SceneComponent
+    {
+    public:
+        /// Constructor.
+        explicit inline Light(vec3 pos, color3 color) :
+            SceneComponent(pos),
+            m_color(color) {}
+
+        /// @return: The color of the light.
+        inline color3& Color() { return m_color; }
+
+    private:
+        /// The color of the light.
+        color3 m_color;
+    };
+}
+
+
+

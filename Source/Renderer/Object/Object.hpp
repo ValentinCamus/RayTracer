@@ -6,28 +6,41 @@
 //  Copyright © 2018 Valentin. All rights reserved.
 //
 
-#ifndef object_hpp
-#define object_hpp
+#pragma once
 
 #include <Core/Core.hpp>
 
-#include "Renderer/Interface/Intersectable.hpp"
-#include "Renderer/Component/SceneComponent.hpp"
-#include "AxisAlignedBoundingBox.hpp"
-#include "Renderer/Ray/Ray.hpp"
+#include <Renderer/Interface/Intersectable.hpp>
+#include <Renderer/Component/SceneComponent.hpp>
+#include <Renderer/Bound/AxisAlignedBoundingBox.hpp>
+#include <Renderer/Ray/Ray.hpp>
 
-class Object : public SceneComponent, public Intersectable {
-public:
-    Object(vec3 pos, bool bUseAABB = true) : SceneComponent(pos), m_bUseAABB(bUseAABB) {}
-    virtual ~Object() {};
-    
-    inline bool UseAABB() const { return m_bUseAABB; }
-    
-    // TODO : we can do better ;)
-    virtual AxisAlignedBoundingBox GetAABB() { return AxisAlignedBoundingBox(vec3(0.f), vec3(0.f)); }
-    
-private:
-    bool m_bUseAABB;
-};
+#define NULL_AABB AxisAlignedBoundingBox(vec3(0.f), vec3(0.f))
 
-#endif /* object_hpp */
+namespace rt
+{
+    class Object :
+            public SceneComponent,
+            public Intersectable
+    {
+    public:
+        /// Constructor.
+        explicit inline Object(vec3 pos, bool bUseAABB = true) :
+            SceneComponent(pos),
+            m_bIsBoundByAABB(bUseAABB) {}
+
+        /// Destructor.
+        ~Object() override = default;
+
+        /// @return: true if this object is bound by an AABB.
+        inline bool IsBoundByAABB() const { return m_bIsBoundByAABB; }
+
+        /// @return: The object AABB (NULL_AABB by default).
+        virtual inline AxisAlignedBoundingBox AABB() { return NULL_AABB; }
+
+    private:
+        /// If this object is bound by an AABB.
+        bool m_bIsBoundByAABB;
+    };
+}
+

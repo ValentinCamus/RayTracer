@@ -1,39 +1,60 @@
 //
-//  material.hpp
-//  Ray
-//
 //  Created by Valentin on 11/11/2018.
 //  Copyright © 2018 Valentin. All rights reserved.
 //
 
-#ifndef material_hpp
-#define material_hpp
+#pragma once
 
 #include <Core/Core.hpp>
 
-class Material {
-public:
-    
-    Material(float IOR, float roughness, color3 diffuse, color3 specular, bool bIsTransparent=false) {
-        m_IOR = IOR;
-        m_roughness = roughness;
-        m_diffuse = diffuse;
-        m_specular = specular;
-        m_bIsTransparent = bIsTransparent;
-    }
+namespace rt
+{
+    class Material
+    {
+    public:
+        /// Constructor.
+        explicit inline Material(float indexOfRefraction,
+                                 float roughness,
+                                 color3 diffuse,
+                                 color3 specular,
+                                 bool bIsTransparent = false) :
+                m_indexOfRefraction(indexOfRefraction),
+                m_roughness(roughness),
+                m_diffuse(diffuse),
+                m_specular(specular),
+                m_bIsTransparent(bIsTransparent) {}
 
-    inline float& IOR()          {return m_IOR;}
-    inline color3& Diffuse()    {return m_diffuse;}
-    inline float& Roughness()    {return m_roughness;}
-    inline color3& Specular()   {return m_specular;}
-    inline bool& IsTransparant() {return m_bIsTransparent;}
+        /// @return: The index of refraction.
+        inline float& IndexOfRefraction() { return m_indexOfRefraction; }
 
-private:
-    float m_IOR;
-    float m_roughness;
-    color3 m_diffuse;
-    color3 m_specular;
-    bool m_bIsTransparent;
-};
+        /// @return: The diffuse/albedo color of the material.
+        inline color3& Diffuse() { return m_diffuse; }
 
-#endif /* material_hpp */
+        /// @return: The roughness of the material.
+        inline float& Roughness() { return m_roughness; }
+
+        /// @return: The specular color of the material.
+        inline color3& Specular() { return m_specular; }
+
+        /// @return: If the material is transparent.
+        inline bool& IsTransparant() { return m_bIsTransparent; }
+
+    private:
+        /// The index of refraction.
+        float m_indexOfRefraction;
+
+        /// The diffuse/albedo color of the material.
+        float m_roughness;
+
+        /// The roughness of the material.
+        color3 m_diffuse;
+
+        /// The specular color of the material.
+        color3 m_specular;
+
+        /// If the material is transparent.
+        bool m_bIsTransparent;
+    };
+}
+
+
